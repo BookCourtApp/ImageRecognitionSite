@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import {Box, Button, ButtonGroup, Container} from "@mui/material";
+import {useState} from "react";
+
+import ImageMarkup from "./ImageRecognition";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [mode, setMode] = useState('markup')
+
+    const handleModeChange = () => {
+
+    }
+
+    return <Container
+        sx={{ padding: 0, paddingTop: '15px', }}>
+        <Box sx={{display: 'flex', justifyContent:'center'}}>
+
+            <ButtonGroup sx={{marginBottom:'15px'}}>
+                <Button variant="contained">Разметка</Button>
+                <Button>Распознавание</Button>
+            </ButtonGroup>
+        </Box>
+
+        <ImageMarkup/>
+
+    </Container>
 }
 
 export default App;
