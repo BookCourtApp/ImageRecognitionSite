@@ -9,4 +9,5 @@ export default class markupService {
     static async postMarkups(data) {
         return $api.post('/PhotoMarkup', {...data})
     }
+
 }

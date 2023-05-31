@@ -1,7 +1,7 @@
 import {Box, Button} from "@mui/material";
 import FilePicker from './FilePicker'
 
-import Viewport from "./Viewport";
+
 import MarkupButtons from "./MarkupButtons";
 import Tools from "./Tools";
 import SavedMarkups from "./SavedMarkups";
@@ -10,13 +10,19 @@ import Alert from '@mui/material/Alert';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
-
-import {postMarkups, setImage} from "../store/markupSlice";
+import {postMarkups, setImage} from "../../store/markupSlice";
 
 
 import {useDispatch, useSelector} from "react-redux";
+import * as PropTypes from "prop-types";
+import Viewport from "./Viewport";
 
 
+function ImageMarkup(props) {
+    return null;
+}
+
+ImageMarkup.propTypes = {backgroundImage: PropTypes.any};
 const Index = () => {
     const dispatch = useDispatch();
 
@@ -45,7 +51,10 @@ const Index = () => {
             {image
                 ? <Box>
 
-                    <Viewport image={image}/>
+                    <div style={{position:'relative'}}>
+
+                        <Viewport backgroundImage={image} />
+                    </div>
                     <Box sx={{padding: '10px'}}>
                         <div style={{display: 'flex', justifyContent: 'center', marginTop: '1rem'}}>
                             <Tools/>

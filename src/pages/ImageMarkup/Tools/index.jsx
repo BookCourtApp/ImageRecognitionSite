@@ -1,8 +1,8 @@
 import ToggleButton from "@mui/material/ToggleButton";
-import RectSelectIcon from "../../common/RectIcon";
-import DotsSelectIcon from "../../common/DotsIcon";
+import RectSelectIcon from "../../../common/RectIcon";
+import DotsSelectIcon from "../../../common/DotsIcon";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentCords, setMarkupType } from "../../store/markupSlice";
+import { setCurrentCords, setMarkupType } from "../../../store/markupSlice";
 import {Box, IconButton, ToggleButtonGroup} from "@mui/material";
 import DeselectIcon from "@mui/icons-material/Deselect";
 

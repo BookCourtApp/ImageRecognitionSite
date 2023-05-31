@@ -1,27 +1,31 @@
-import {Box, Button, ButtonGroup, Container} from "@mui/material";
+import {Box, Container, ToggleButton, ToggleButtonGroup} from "@mui/material";
 import {useState} from "react";
 
-import ImageMarkup from "./ImageRecognition";
+import ImageMarkup from "./pages/ImageMarkup";
+import ImageRecognition from "./pages/ImageRecognition";
 
 function App() {
 
     const [mode, setMode] = useState('markup')
 
-    const handleModeChange = () => {
-
+    const handleModeChange = (e, mode) => {
+        setMode(mode)
     }
 
     return <Container
-        sx={{ padding: 0, paddingTop: '15px', }}>
-        <Box sx={{display: 'flex', justifyContent:'center'}}>
-
-            <ButtonGroup sx={{marginBottom:'15px'}}>
-                <Button variant="contained">Разметка</Button>
-                <Button>Распознавание</Button>
-            </ButtonGroup>
+        sx={{padding: 0, paddingTop: '15px',}}>
+        <Box sx={{display: 'flex', justifyContent: 'center'}}>
+            <ToggleButtonGroup color="primary" value={mode} exclusive sx={{marginBottom: '15px'}}
+                               onChange={handleModeChange}>
+                <ToggleButton value="markup" variant="contained">Разметка</ToggleButton>
+                <ToggleButton value="recognition">Распознавание</ToggleButton>
+            </ToggleButtonGroup>
         </Box>
-
-        <ImageMarkup/>
+        {
+            (mode === 'markup')
+                ? <ImageMarkup/>
+                : <ImageRecognition/>
+        }
 
     </Container>
 }

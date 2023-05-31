@@ -2,8 +2,8 @@ import {useSelector} from "react-redux";
 
 import {useDispatch} from "react-redux";
 
-import {deleteMarkup} from "../../store/markupSlice";
-import ConfirmationDialog from "../../common/ConfirmationDialog";
+import {deleteMarkup} from "../../../store/markupSlice";
+import ConfirmationDialog from "../../../common/ConfirmationDialog";
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';

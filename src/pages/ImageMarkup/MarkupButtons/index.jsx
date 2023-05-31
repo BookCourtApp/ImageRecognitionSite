@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import {useDispatch, useSelector} from 'react-redux';
-import {setCurrentBook, setCurrentTexts,saveCurrentMarkup} from "../../store/markupSlice";
+import {setCurrentBook, setCurrentTexts,saveCurrentMarkup} from "../../../store/markupSlice";
 import {Box} from "@mui/material";
 
 import Fab from '@mui/material/Fab';
