@@ -6,6 +6,7 @@ import ImageRecognition from "./pages/ImageRecognition";
 
 function App() {
 
+    //разметка или распознавание
     const [mode, setMode] = useState('markup')
 
     const handleModeChange = (e, mode) => {

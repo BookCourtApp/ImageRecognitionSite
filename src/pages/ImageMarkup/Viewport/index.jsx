@@ -60,7 +60,7 @@ const CanvasComponent = ({backgroundImage}) => {
     };
 
     useEffect(() => {
-        console.log('mc')
+
         const overlayCanvas = overlayRef.current;
         const overlayContext = overlayCanvas.getContext('2d');
 

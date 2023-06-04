@@ -30,7 +30,7 @@ export const postMarkups = createAsyncThunk(
             const response = await markupService.postMarkups(result);
             return await response.json();
         } catch (err) {
-            return thunkAPI.rejectWithValue()
+            return thunkAPI.rejectWithValue();
         }
 
     }
@@ -86,8 +86,7 @@ export const markSlice = createSlice({
             })
             .addCase(postMarkups.fulfilled, (state, action) => {
                 state = initialState;
-                state.status = 'fulfilled'
-                alert('suc')
+                state.status = 'fulfilled';
             })
             .addCase(postMarkups.rejected, (state, action) => {
                 state.status = 'error'

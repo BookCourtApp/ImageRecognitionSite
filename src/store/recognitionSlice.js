@@ -13,8 +13,9 @@ export const getMarkups = createAsyncThunk(
     'recognition/getMarkups',
     async (_, thunkAPI) => {
         try {
-            const photo = thunkAPI.getState().photo;
-
+            const state = thunkAPI.getState().recognition;
+            const photo = state.image;
+            console.log('img', photo)
             const response = await recognitionService.getMarkups(photo);
             console.log(response)
             if (!response.status === 200) {

@@ -59,7 +59,6 @@ const Index = () => {
 
 
                 <div style={{position: 'relative'}}>
-
                     <Viewport backgroundImage={image} markups={markups}/>
                 </div>
 

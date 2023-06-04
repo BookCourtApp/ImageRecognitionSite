@@ -1,7 +1,6 @@
 import {Box, Button} from "@mui/material";
 import FilePicker from './FilePicker'
 
-
 import MarkupButtons from "./MarkupButtons";
 import Tools from "./Tools";
 import SavedMarkups from "./SavedMarkups";
@@ -10,8 +9,8 @@ import Alert from '@mui/material/Alert';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
-import {postMarkups, setImage} from "../../store/markupSlice";
 
+import {postMarkups, setImage} from "../../store/markupSlice";
 
 import {useDispatch, useSelector} from "react-redux";
 import * as PropTypes from "prop-types";

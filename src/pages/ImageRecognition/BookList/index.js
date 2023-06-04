@@ -1,7 +1,5 @@
 import {useSelector} from "react-redux";
 import {List, ListItem, ListItemText} from "@mui/material";
-import Typography from "@mui/material/Typography";
-
 const BookList = () => {
 
     const currentIndex = useSelector(state => state.recognition.currentIndex)
@@ -15,7 +13,8 @@ const BookList = () => {
                     <List>
                         {markups[currentIndex].possibleBooks.map((item,index) => {
 
-                            const [author,title] = item.split('.')
+                            const [title, author] = item.split('|')
+
                             return (
                                 <ListItem style={{ margin:0, padding:0 }} key={index}>
                                     <ListItemText
