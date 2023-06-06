@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const $api = axios.create({
     withCredentials: true,
-    baseURL: 'https://c687-86-102-7-246.ngrok-free.app'
+    baseURL: 'http://localhost:5078'
 })
 
 export default class recognitionService {
