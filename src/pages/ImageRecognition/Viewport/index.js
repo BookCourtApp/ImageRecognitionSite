@@ -96,7 +96,8 @@ function drawRect(context, coordinates, color = 'rgba(128, 128, 128, 0.5)') {
     context.lineTo(x3, y3);
     context.lineTo(x4, y4);
     context.closePath();
-    context.fillStyle = color;
+    const randomColor = `rgba(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, 0.3)`; 
+    context.fillStyle = randomColor;
     context.fill();
 }
 
