@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setCurrentIndex} from "../../../store/recognitionSlice";
 
 const Viewport = ({backgroundImage, markups}) => {
@@ -7,6 +7,7 @@ const Viewport = ({backgroundImage, markups}) => {
 
     const canvasRef = useRef(null);
     const overlayRef = useRef(null);
+    const currentIndex = useSelector(state => state.recognition.currentIndex);
 
     const handleCanvasClick = (e) => {
         const canvas = canvasRef.current;
@@ -23,12 +24,13 @@ const Viewport = ({backgroundImage, markups}) => {
         const overlayContext = overlayCanvas.getContext('2d');
 
         overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height);
-
-        markups.forEach(item => {
-            drawRect(overlayContext,item)
+        markups.forEach((item, index) => {
+            if(index === currentIndex)
+                drawRect(overlayContext,item, true)
+            drawRect(overlayContext,item, false)
         })
 
-    }, [markups]);
+    }, [markups, currentIndex]);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -87,7 +89,7 @@ const Viewport = ({backgroundImage, markups}) => {
 
 export default Viewport;
 
-function drawRect(context, coordinates, color = 'rgba(128, 128, 128, 0.5)') {
+function drawRect(context, coordinates, isStroke, color = 'rgba(255, 0, 0, 1)') {
     const {x1,y1,x2,y2,x3,y3,x4,y4} = coordinates;
     context.beginPath();
     context.beginPath();
@@ -98,6 +100,11 @@ function drawRect(context, coordinates, color = 'rgba(128, 128, 128, 0.5)') {
     context.closePath();
     const randomColor = `rgba(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, 0.3)`; 
     context.fillStyle = randomColor;
+    if (isStroke) {
+        context.strokeStyle = color;
+        context.lineWidth = 10;
+        context.stroke();
+    }
     context.fill();
 }
 
