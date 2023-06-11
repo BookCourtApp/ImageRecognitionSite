@@ -15,7 +15,7 @@ const Viewport = ({backgroundImage, markups}) => {
         const x = Math.round((e.clientX - rect.left) * (canvas.width / canvas.clientWidth));
         const y = Math.round((e.clientY - rect.top) * (canvas.height / canvas.clientHeight));
 
-        const index =  findQuadrilateralIndex(markups, x,y);
+        const index = findQuadrilateralIndex(markups, x, y);
         dispatch(setCurrentIndex(index))
     }
 
@@ -25,9 +25,15 @@ const Viewport = ({backgroundImage, markups}) => {
 
         overlayContext.clearRect(0, 0, overlayCanvas.width, overlayCanvas.height);
         markups.forEach((item, index) => {
-            if(index === currentIndex)
-                drawRect(overlayContext,item, true)
-            drawRect(overlayContext,item, false)
+
+            const borderColor = (index === currentIndex) ? 'white' : (item.selectedTextIndex>=0) && 'blue'
+
+            if (item.possibleBooks.length >=20) {
+                drawRect(overlayContext, item, 'rgba(255,0,0,0.4)', borderColor)
+            } else {
+                drawRect(overlayContext, item, 'rgba(0,255,0,0.4)',borderColor)
+            }
+
         })
 
     }, [markups, currentIndex]);
@@ -89,8 +95,8 @@ const Viewport = ({backgroundImage, markups}) => {
 
 export default Viewport;
 
-function drawRect(context, coordinates, isStroke, color = 'rgba(255, 0, 0, 1)') {
-    const {x1,y1,x2,y2,x3,y3,x4,y4} = coordinates;
+function drawRect(context, coordinates, color, borderColor) {
+    const {x1, y1, x2, y2, x3, y3, x4, y4} = coordinates;
     context.beginPath();
     context.beginPath();
     context.moveTo(x1, y1);
@@ -98,19 +104,18 @@ function drawRect(context, coordinates, isStroke, color = 'rgba(255, 0, 0, 1)') 
     context.lineTo(x3, y3);
     context.lineTo(x4, y4);
     context.closePath();
-    const randomColor = `rgba(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, 0.3)`; 
-    context.fillStyle = randomColor;
-    if (isStroke) {
-        context.strokeStyle = color;
+    if (borderColor) {
+        context.strokeStyle = borderColor;
         context.lineWidth = 10;
         context.stroke();
     }
+    context.fillStyle = color;
     context.fill();
 }
 
 function findQuadrilateralIndex(coordinates, x, y) {
     for (let i = 0; i < coordinates.length; i++) {
-        const { x1, y1, x2, y2, x3, y3, x4, y4 } = coordinates[i];
+        const {x1, y1, x2, y2, x3, y3, x4, y4} = coordinates[i];
         const isInQuadrilateral = isPointInQuadrilateral(x1, y1, x2, y2, x3, y3, x4, y4, x, y);
         if (isInQuadrilateral) {
             return i;

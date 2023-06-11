@@ -7,6 +7,8 @@ const initialState = {
     image: '',
     markups: [],
     currentIndex: null,
+    selectedBooks: [],
+    searchValue: '',
 }
 
 export const getMarkups = createAsyncThunk(
@@ -42,6 +44,10 @@ export const RecognitionSlice = createSlice({
         },
         setCurrentIndex(state, action) {
             state.currentIndex = action.payload;
+        },
+        setSelectedTextIndex(state, action) {
+            const {bookIndex, selectedTextIndex} = action.payload;
+            state.markups[bookIndex].selectedTextIndex = selectedTextIndex;
         }
     },
     extraReducers: (builder) => {
@@ -63,6 +69,9 @@ export const RecognitionSlice = createSlice({
 })
 
 export const {
-    setImage, setStatus, setCurrentIndex
+    setImage,
+    setStatus,
+    setCurrentIndex,
+    setSelectedTextIndex
 } = RecognitionSlice.actions;
 export default RecognitionSlice.reducer;

@@ -1,0 +1,41 @@
+.root {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.input {
+  z-index: 0;
+  position: relative;
+  padding: 5px 45px;
+  height: 40px;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.5s ease-in-out;
+
+  &:focus {
+    border: 1px solid rgba(0, 0, 0, 0.4);
+  }
+}
+
+.searchIcon {
+  z-index: 1;
+  position: relative;
+  left: 35px;
+  top: 9px;
+  opacity: 0.2;
+  height: 35px;
+  width: 35px;
+}
+
+.clearIcon {
+  z-index: 1;
+  position: relative;
+  right: 35px;
+  top: 9px;
+  opacity: 0.2;
+  height: 35px;
+  width: 35px;
+
+}

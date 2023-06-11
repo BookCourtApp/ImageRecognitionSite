@@ -43,25 +43,16 @@ const Index = () => {
         {image
             ? <Box>
 
-
+                <div style={{position: 'relative'}}>
+                    <Viewport backgroundImage={image} markups={markups}/>
+                </div>
                 {markups.length > 0 && (
                     <Box sx={{
-                        height: '100px',
-                        padding: '10px',
-                        marginBottom: '10px',
-
-                        display:'flex',
-                        justifyContent:'center',
+                        height:'100%',
                         overflow: 'scroll'
                     }}>
                         <BookList/>
                     </Box>)}
-
-
-                <div style={{position: 'relative'}}>
-                    <Viewport backgroundImage={image} markups={markups}/>
-                </div>
-
 
             </Box>
             : <Box>
