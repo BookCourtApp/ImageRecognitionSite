@@ -30,7 +30,11 @@ const Viewport = ({backgroundImage, markups}) => {
 
             if (item.possibleBooks.length >=20) {
                 drawRect(overlayContext, item, 'rgba(255,0,0,0.4)', borderColor)
-            } else {
+            } 
+            else if(item.possibleBooks.length === 0){
+                drawRect(overlayContext, item, 'rgba(128,128,128, 0.4)', borderColor)
+            }
+            else {
                 drawRect(overlayContext, item, 'rgba(0,255,0,0.4)',borderColor)
             }
 
