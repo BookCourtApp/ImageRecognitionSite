@@ -23,13 +23,16 @@ function ImageMarkup(props) {
 
 ImageMarkup.propTypes = {backgroundImage: PropTypes.any};
 const Index = () => {
+    
     const dispatch = useDispatch();
 
     const image = useSelector(state => state.markups.image)
     const uploadStatus = useSelector(state => state.markups.status)
+
     const onFileSelect = (file) => {
         dispatch(setImage(file));
     }
+
     const handleUpload = () => {
         dispatch(postMarkups())
     }
